@@ -17,8 +17,11 @@
     "Brett Zamir"
   ],
   "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "type": "commonjs",
   "scripts": {
-    "eslint": "eslint .",
+    "eslint": "eslint . --config eslint.config.mjs",
+    "eslint8": "cross-env ESLINT_USE_FLAT_CONFIG=false npx eslint@8 . --config .eslintrc.js",
     "mocha": "nyc mocha tests --recursive",
     "test": "npm run eslint && npm run mocha"
   },
@@ -26,7 +29,9 @@
     "regexp-tree": "^0.1.21"
   },
   "devDependencies": {
-    "eslint": "^7.0.0",
+    "@types/eslint": "^8.56.10",
+    "cross-env": "^7.0.3",
+    "eslint": "^9.5.0",
     "mocha": "^10.2.0",
     "nyc": "^15.0.1"
   },

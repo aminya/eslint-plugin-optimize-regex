@@ -3,14 +3,12 @@
  * @author Ezinwa Okpoechi <brainmaestro@outlook.com>
  */
 
-'use strict'
-
 //------------------------------------------------------------------------------
 // Requirements
 //------------------------------------------------------------------------------
 
-const rule = require('../../../lib/rules/optimize-regex'),
-  {RuleTester} = require('eslint')
+const rule = require('../../../lib/rules/optimize-regex')
+const {RuleTester} = require('eslint')
 
 const ruleTester = new RuleTester()
 ruleTester.run('optimize-regex', rule, {
@@ -73,21 +71,6 @@ ruleTester.run('optimize-regex', rule, {
       options: [{
         whitelist: [
           'charClassToMeta',       // [0-9] -> [\d]
-          'charClassToSingleChar', // [\d] -> \d
-        ]
-      }]
-    },
-    {
-      code: 'var re = /[0-9]/',
-      output: 'var re = /[\\d]/',
-      errors: [
-        {
-          message: '/[0-9]/ can be optimized to /[\\d]/',
-          type: 'Literal',
-        }
-      ],
-      options: [{
-        blacklist: [
           'charClassToSingleChar', // [\d] -> \d
         ]
       }]

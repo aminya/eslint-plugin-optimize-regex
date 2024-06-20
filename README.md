@@ -20,7 +20,26 @@ npm install eslint-plugin-optimize-regex --save-dev
 
 **Note:** If you installed ESLint globally (using the `-g` flag) then you must also install `eslint-plugin-optimize-regex` globally.
 
-## Usage
+## Usage for Eslint 9 and above
+
+Add the following to your `eslint.config.mjs`
+
+```js
+import pluginOptimizeRegex from "eslint-plugin-optimize-regex";
+
+/** @type {import("eslint").Linter.FlatConfig[]} */
+export default [pluginOptimizeRegex.configs.recommended];
+```
+
+or the following to your `eslint.config.cjs`
+
+```js
+const pluginOptimizeRegex = require("eslint-plugin-optimize-regex").default
+
+module.exports = [pluginOptimizeRegex.configs.recommended]
+```
+
+## Usage for Eslint 8 and below
 
 Add `optimize-regex` to the plugins section of your `.eslintrc` configuration file. You can omit the `eslint-plugin-` prefix:
 
@@ -61,7 +80,7 @@ If you want the latter particular settings, you can avoid setting `plugins` and
 
 ```json
 {
-  "extends": ["optimize-regex/recommended"]
+  "extends": ["optimize-regex/recommended-legacy"]
 }
 ```
 
@@ -69,7 +88,7 @@ Or without the blacklist:
 
 ```json
 {
-  "extends": ["optimize-regex/all"]
+  "extends": ["optimize-regex/all-legacy"]
 }
 ```
 
